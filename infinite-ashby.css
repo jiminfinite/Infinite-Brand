@@ -1,0 +1,564 @@
+/*
+ * Infinite Capital — Ashby application form theme
+ * Designed for Ashby "application-form-only" embeds.
+ *
+ * Palette taken from the Infinite careers site:
+ *   page background: #050505
+ *   primary text:    #e4e4e4
+ *   gold accent:     #e3debe
+ *
+ * NOTE: Ashby's form is rendered inside an iframe, so your Webflow
+ * stylesheet does not cascade into it. This file must be loaded by Ashby
+ * via customCssUrl / global Job Board CSS.
+ */
+
+:root {
+  /* Infinite tokens */
+  --infinite-bg: #050505;
+  --infinite-bg-elevated: #0a0a0a;
+  --infinite-bg-hover: #101010;
+
+  --infinite-text: #e4e4e4;
+  --infinite-text-secondary: rgba(228, 228, 228, 0.72);
+  --infinite-text-muted: rgba(228, 228, 228, 0.46);
+  --infinite-placeholder: rgba(228, 228, 228, 0.34);
+
+  --infinite-border: rgba(228, 228, 228, 0.20);
+  --infinite-border-strong: rgba(228, 228, 228, 0.38);
+
+  /* Infinite's gold button fallback in the Webflow site */
+  --infinite-gold: #e3debe;
+  --infinite-gold-dim: rgba(227, 222, 190, 0.12);
+  --infinite-gold-hover: rgba(227, 222, 190, 0.18);
+
+  --infinite-error: #e8a8a8;
+
+  /*
+   * Replace this stack with Infinite's exact Webflow sans family if desired.
+   * The rest of the theme does not depend on a specific font.
+   */
+  --infinite-font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* ---------------------------------------------------------------
+     Ashby theme variables
+     --------------------------------------------------------------- */
+  --fontFamily: var(--infinite-font-sans);
+
+  --fontWeightNormal: 400;
+  --fontWeightLightBold: 500;
+  --fontWeightMediumBold: 600;
+  --fontWeightHeavyBold: 600;
+
+  --fontSizeSmall: 12px;
+  --fontSizeNormal: 14px;
+  --fontSizeLarge: 16px;
+  --fontSizeXlarge: 18px;
+  --fontSizeXxlarge: 20px;
+  --fontSizeXxxlarge: 24px;
+  --fontSizeXxxxlarge: 32px;
+
+  --borderRadiusContainer: 2px;
+  --borderRadiusControl: 2px;
+  --borderRadiusButton: 2px;
+  --borderRadiusCircle: 999px;
+
+  --borderWidthNormal: 1px;
+  --borderWidthBold: 1px;
+  --borderWidthHeavy: 1px;
+
+  --colorAppBackground: var(--infinite-bg);
+
+  --colorNeutral800: var(--infinite-text);
+  --colorNeutral700: var(--infinite-text-secondary);
+  --colorNeutral600: var(--infinite-text-muted);
+  --colorNeutral500: var(--infinite-text-muted);
+  --colorNeutral400: var(--infinite-border-strong);
+  --colorNeutral300: var(--infinite-border);
+  --colorNeutral200: var(--infinite-bg-hover);
+  --colorNeutral100: var(--infinite-bg-elevated);
+  --colorNeutral000: var(--infinite-bg);
+
+  --colorPrimary000: transparent;
+  --colorPrimary600: var(--infinite-gold);
+  --colorPrimary900: var(--infinite-gold);
+
+  --colorSecondary900: var(--infinite-gold);
+
+  /* Convenient local aliases */
+  --label: var(--infinite-text);
+  --label-secondary: var(--infinite-text-secondary);
+  --label-muted: var(--infinite-text-muted);
+  --placeholder: var(--infinite-placeholder);
+  --border: var(--infinite-border);
+  --border-strong: var(--infinite-border-strong);
+  --brand: var(--infinite-gold);
+  --bg: var(--infinite-bg);
+  --bg-hover: var(--infinite-bg-hover);
+}
+
+
+/* ================================================================
+   GLOBAL
+   ================================================================ */
+
+html,
+body,
+#root {
+  margin: 0;
+  background: transparent !important;
+  color: var(--label);
+  font-family: var(--fontFamily);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  padding: 0 !important;
+}
+
+::selection {
+  color: var(--infinite-bg);
+  background: var(--brand);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--brand);
+}
+
+a:hover {
+  color: var(--infinite-text);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 1px solid var(--brand) !important;
+  outline-offset: 2px !important;
+}
+
+
+/* ================================================================
+   OUTER FORM
+   ================================================================ */
+
+.ashby-application-form-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--label);
+}
+
+.ashby-application-form-section-container {
+  margin: 0 0 48px !important;
+}
+
+.ashby-application-form-section-header {
+  margin: 0 0 28px !important;
+  padding: 0 0 16px !important;
+  border-color: var(--border) !important;
+}
+
+.ashby-application-form-section-header-title {
+  margin: 0 !important;
+  color: var(--label) !important;
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.ashby-application-form-section-header-description {
+  margin-top: 8px !important;
+  color: var(--label-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+
+/* ================================================================
+   QUESTIONS + LABELS
+   ================================================================ */
+
+.ashby-application-form-field-entry {
+  margin-bottom: 28px !important;
+}
+
+.ashby-application-form-question-title {
+  margin: 0 0 10px !important;
+  color: var(--label) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+}
+
+.ashby-application-form-question-title::after {
+  margin-left: 2px !important;
+  color: var(--brand) !important;
+}
+
+.ashby-application-form-question-description {
+  margin: -3px 0 12px !important;
+  color: var(--label-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
+
+/* ================================================================
+   TEXT / EMAIL / PHONE / LONG ANSWER
+   ================================================================ */
+
+.ashby-application-form-field-entry input[type="text"],
+.ashby-application-form-field-entry input[type="email"],
+.ashby-application-form-field-entry input[type="tel"],
+.ashby-application-form-field-entry input[type="url"],
+.ashby-application-form-field-entry input[type="number"],
+.ashby-application-form-field-entry textarea,
+.ashby-application-form-field-entry select {
+  width: 100%;
+  min-height: 48px !important;
+  padding: 12px 14px !important;
+
+  color: var(--label) !important;
+  background: rgba(255, 255, 255, 0.015) !important;
+
+  border: 1px solid var(--border) !important;
+  border-radius: 2px !important;
+
+  box-shadow: none !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease !important;
+}
+
+.ashby-application-form-field-entry textarea {
+  min-height: 132px !important;
+  resize: vertical;
+}
+
+.ashby-application-form-field-entry input:hover,
+.ashby-application-form-field-entry textarea:hover,
+.ashby-application-form-field-entry select:hover {
+  border-color: var(--border-strong) !important;
+}
+
+.ashby-application-form-field-entry input:focus,
+.ashby-application-form-field-entry textarea:focus,
+.ashby-application-form-field-entry select:focus {
+  border-color: var(--brand) !important;
+  background: rgba(227, 222, 190, 0.025) !important;
+  box-shadow: 0 0 0 1px rgba(227, 222, 190, 0.08) !important;
+}
+
+.ashby-application-form-field-entry input::placeholder,
+.ashby-application-form-field-entry textarea::placeholder {
+  color: var(--placeholder) !important;
+  opacity: 1 !important;
+}
+
+
+/* ================================================================
+   CHECKBOXES / RADIOS
+   ================================================================ */
+
+.ashby-application-form-field-entry input[type="checkbox"],
+.ashby-application-form-field-entry input[type="radio"] {
+  accent-color: var(--brand);
+}
+
+/* Ashby's Yes / No and multiple-choice segmented controls */
+.ashby-application-form-field-entry button[class*="_option"] {
+  min-height: 44px !important;
+  padding: 10px 18px !important;
+
+  color: var(--label-secondary) !important;
+  background: transparent !important;
+  border-color: var(--border) !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease !important;
+}
+
+.ashby-application-form-field-entry button[class*="_option"]:hover {
+  color: var(--label) !important;
+  background: rgba(255, 255, 255, 0.025) !important;
+  border-color: var(--border-strong) !important;
+}
+
+.ashby-application-form-field-entry button[class*="_option"][class*="_active"] {
+  color: var(--infinite-bg) !important;
+  background: var(--brand) !important;
+  border-color: var(--brand) !important;
+}
+
+
+/* ================================================================
+   FILE UPLOAD
+   ================================================================ */
+
+/* Resume/file uploader button */
+.ashby-application-form-field-entry
+  input[type="file"]
+  ~ div[class*="_instructions"]
+  > button {
+  min-height: 48px !important;
+  padding: 11px 16px !important;
+
+  color: var(--brand) !important;
+  background: transparent !important;
+  border: 1px solid var(--brand) !important;
+  border-radius: 2px !important;
+
+  box-shadow: none !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease !important;
+}
+
+.ashby-application-form-field-entry
+  input[type="file"]
+  ~ div[class*="_instructions"]
+  > button:hover {
+  color: var(--infinite-text) !important;
+  background: var(--infinite-gold-dim) !important;
+  border-color: var(--brand) !important;
+  box-shadow: none !important;
+}
+
+.ashby-application-form-field-entry
+  input[type="file"]
+  ~ div[class*="_instructions"]
+  svg {
+  fill: currentColor !important;
+  color: currentColor !important;
+  margin-top: 0 !important;
+}
+
+.ashby-application-form-field-entry
+  input[type="file"]
+  ~ div[class*="_file"]
+  > p[class*="_name"] {
+  color: var(--label) !important;
+  background: transparent !important;
+}
+
+
+/* ================================================================
+   AUTOFILL FROM RESUME
+   ================================================================ */
+
+.ashby-application-form-autofill-pane {
+  margin: 0 0 44px !important;
+  overflow: hidden;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+
+.ashby-application-form-autofill-input-base-layer,
+.ashby-application-form-autofill-input-drag-layer,
+.ashby-application-form-autofill-input-pending-layer:not([data-highlight]) {
+  color: var(--label) !important;
+  background: rgba(255, 255, 255, 0.015) !important;
+}
+
+.ashby-application-form-autofill-pane p {
+  color: var(--label-secondary) !important;
+}
+
+.ashby-application-form-autofill-pane svg {
+  color: var(--brand) !important;
+}
+
+.ashby-application-form-autofill-input-base-layer
+  button[class*="_ctaButton"] {
+  color: var(--brand) !important;
+  background: transparent !important;
+  border: 1px solid var(--brand) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.ashby-application-form-autofill-input-base-layer
+  button[class*="_ctaButton"]:hover {
+  color: var(--infinite-text) !important;
+  background: var(--infinite-gold-dim) !important;
+  border-color: var(--brand) !important;
+}
+
+.ashby-application-form-autofill-input-pending-layer[data-highlight="positive"] {
+  color: var(--infinite-bg) !important;
+  background: var(--brand) !important;
+}
+
+
+/* ================================================================
+   DROPDOWNS / LOCATION PICKER / POPOVERS
+   These selectors intentionally target Ashby's generated popup shells.
+   ================================================================ */
+
+[role="listbox"],
+[role="menu"],
+div[class*="_popover"],
+div[class*="_menu"] {
+  color: var(--label) !important;
+  background: var(--infinite-bg-elevated) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45) !important;
+}
+
+[role="option"] {
+  color: var(--label-secondary) !important;
+  background: transparent !important;
+}
+
+[role="option"]:hover,
+[role="option"][aria-selected="true"] {
+  color: var(--label) !important;
+  background: var(--infinite-gold-dim) !important;
+}
+
+
+/* ================================================================
+   SUBMIT
+   ================================================================ */
+
+.ashby-application-form-submit-button {
+  width: 100% !important;
+  min-height: 50px !important;
+  margin-top: 44px !important;
+
+  color: var(--brand) !important;
+  background: transparent !important;
+
+  border: 1px solid var(--brand) !important;
+  border-radius: 2px !important;
+
+  box-shadow: none !important;
+
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.ashby-application-form-submit-button:hover {
+  color: var(--infinite-text) !important;
+  background: var(--infinite-gold-dim) !important;
+  box-shadow: inset 0 0 0 1px rgba(227, 222, 190, 0.08) !important;
+}
+
+.ashby-application-form-submit-button:active {
+  background: var(--infinite-gold-hover) !important;
+}
+
+.ashby-application-form-submit-button svg,
+.ashby-application-form-container button svg {
+  fill: currentColor !important;
+  color: currentColor !important;
+}
+
+.loadingSvg path {
+  stroke: currentColor !important;
+}
+
+
+/* ================================================================
+   ERRORS / SUCCESS
+   ================================================================ */
+
+div[role="alert"][aria-live="assertive"][data-highlight="negative"],
+.ashby-application-form-failure-container {
+  color: var(--infinite-error) !important;
+}
+
+.ashby-application-form-success-container {
+  margin: 0 !important;
+  padding: 24px 0 !important;
+
+  color: var(--label-secondary) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* ================================================================
+   SMALL PRINT / RECAPTCHA / EMBED FOOTER
+   Keep legal/verification copy visible, just visually quiet.
+   ================================================================ */
+
+p[class*="_recaptchaLegal"],
+#root footer[class*="_embedded"] {
+  color: var(--label-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+}
+
+p[class*="_recaptchaLegal"] a,
+#root footer[class*="_embedded"] a {
+  color: var(--label-secondary) !important;
+}
+
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+
+@media (max-width: 767px) {
+  .ashby-application-form-section-container {
+    margin-bottom: 36px !important;
+  }
+
+  .ashby-application-form-field-entry {
+    margin-bottom: 24px !important;
+  }
+
+  .ashby-application-form-section-header-title {
+    font-size: 17px !important;
+  }
+
+  .ashby-application-form-field-entry input[type="text"],
+  .ashby-application-form-field-entry input[type="email"],
+  .ashby-application-form-field-entry input[type="tel"],
+  .ashby-application-form-field-entry input[type="url"],
+  .ashby-application-form-field-entry textarea {
+    font-size: 16px !important; /* prevents iOS zoom */
+  }
+}
